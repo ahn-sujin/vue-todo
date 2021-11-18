@@ -1,6 +1,6 @@
 <template>
     <div class="inputBox shadow">
-        <input type="text" v-model = "newTodoItem" placeholder="Type what you have to do" @keypress.enter = "addTodo">
+        <input type="text" v-model = "newTodoItem" placeholder="Type what you have to do" @keyup.enter="addTodo">
         <!-- v-on:key.enter 인풋 박스에 enter를 눌렀을 때 동작하는 속성   -->
         <span class="addContainer" v-on:click= "addTodo"><i class="addBtn fa fa-plus" aria-hidden= "true"></i></span>
     </div>
@@ -15,15 +15,15 @@
         },
         methods: {
             addTodo(){
-                console.log(this.newTodoItem);
+                // console.log(this.newTodoItem);
                 // localStorage.setItem(this.newTodoItem, this.newTodoItem);
     
                 // 1.  인풋 박스의 입력 값이 있을 때만 저장
                 if (this.newTodoItem !== "") {
                     // 2. 인풋 박스에 입력된 텍스트의 앞뒤 공백 문자열 제거
                     var value = this.newTodoItem && this.newTodoItem.trim();
-                    // localStorage.setItem(value, value); // * setItem : 로컬 스토리지에 데이터를 추가하는 API (키 , 값) 형태로 저장
-                    this.$emit('addTodo',value); // * 이벤트('addTodo')를 전달할 때, 할 일 텍스트 값인 value 객체를 인자 값으로 전달한다. 
+                    this.$emit('addTodo', value);
+                    // localStorage.setItem(value, value); //* setItem : 로컬 스토리지에 데이터를 추가하는 API (키 , 값) 형태로 저장
                     // 3. 인풋 박스의 입력 초기화
                     this.clearInput();
                 }
@@ -60,5 +60,4 @@
         color: #fff;
         vertical-align: middle;
     }
-
 </style>

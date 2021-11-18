@@ -1,9 +1,9 @@
 <template>
   <div id="app">
     <TodoHeader></TodoHeader>
-    <TodoInput v-on:addTodo = "addTodo"></TodoInput>
-    <TodoList v-bind:propsdata = "todoItems" @removeTodo= "removeTodo"></TodoList>
-    <TodoFooter v-on:removeAll = "clearAll"></TodoFooter>
+    <TodoInput v-on:addTodo = 'addTodo'></TodoInput>
+    <TodoList v-bind:propsdata = 'todoItems' @removeTodo = 'removeTodo' ></TodoList>
+    <TodoFooter v-on:removeAll = 'clearAll'></TodoFooter>
   </div>
 </template>
 
@@ -12,37 +12,32 @@
     import TodoInput from './components/TodoInput.vue'
     import TodoList from './components/TodoList.vue'
     import TodoFooter from './components/TodoFooter.vue'
-
     export default{
-      // todoItems 데이터 속성과 addTodo() 매서드를 추가
       data(){
-        return{
-          todoItems: [] // 데이터 속성 todoItems 선언
+        return {
+          todoItems: [] //todoItems 데이터 속성 선언
         }
       },
-
-      // todoList.vue에서 옮겨옴
       created() {
-            if (localStorage.length > 0){
-                for(var i = 0; i < localStorage.length; i++) {
-                    this.todoItems.push(localStorage.key(i));
-                }
-            }
+        if (localStorage.length > 0){
+          for(var i = 0; i < localStorage.length; i++) {
+            this.todoItems.push(localStorage.key(i));
+          }
+        }
       },
-
-      methods: {
-        addTodo(todoItem) {
-           // 로컬 스토리지에 데이터를 추가하는 로직
-           localStorage.setItem(todoItem, todoItem);
-           this.todoItems.push(todoItem);
+      methods:{
+        // 로컬 스토리지에 데이터를 추가하는 로직
+        addTodo(todoItem){ // todoItem 은  todoInput컴포넌트에서 올려 보낸 할일 텍스트 값 
+          localStorage.setItem(todoItem, todoItem); 
+          this. todoItems.push(todoItem);
         },
         clearAll(){
           localStorage.clear(); 
-          this.todoItems = []; //todoItmes의 데이터를 비운다.
+          this.todoItems = [];
         },
         removeTodo(todoItem, index){
-          localStorage.removeItem(todoItem);
-          this.todoItems.splice(index, 1);
+           localStorage.removeItem(todoItem);
+           this.todoItems.splice(index, 1);
         }
       },
       components: {
@@ -69,5 +64,4 @@
   .shadow{
     box-shadow: 5px 10px 10px rgba(0,0,0,0.3);
   }
-
 </style>

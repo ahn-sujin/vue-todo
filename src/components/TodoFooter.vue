@@ -8,7 +8,6 @@
     export default{
         methods : {
             clearTodo(){
-                // localStorage.clear();
                 this.$emit('removeAll');
             }
         }
@@ -24,11 +23,9 @@
         border-radius: 5px;
         margin: 40px auto 0;
     }
-
     .clearAllBtn{
         display: block;
         color: #e20303;
         cursor: pointer;
     }
-
 </style>
