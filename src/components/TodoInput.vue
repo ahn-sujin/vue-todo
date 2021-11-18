@@ -24,8 +24,8 @@
             addTodo(){
                 // console.log(this.newTodoItem);
                 if(this.newTodoItem !== ""){ //인풋박스에 입력된 텍스트가 없을 경우 로컬 스토리지에 데이터가 저장되지 않도록 한다.
-                    const value = this.newTodoItem && this.newTodoItem.trim(); //trim() : 문자열 좌우에서 공백을 제거하는 함수
-                    localStorage.setItem(value, value);
+                    var value = this.newTodoItem && this.newTodoItem.trim(); //trim() : 문자열 좌우에서 공백을 제거하는 함수
+                    this.$emit('inputTodo', value);
                     this.clearInput();
                 }
             },
