@@ -1,32 +1,45 @@
 <template>
-    <!-- 2. 뷰 데이터의 아이템 개수만큼 리스트 아이템 표시 -->
     <section>
         <ul>
-            <li v-for= "(todoItem, index) in propsdata" :key="index" class="shadow">
-                <i class="checkBtn fa fa-check" aria-hidden="true"></i>
+            <!-- 
+                v-for = "아이템명 in array"
+                : 지정한 데이터의 갯수만큼 html을 출력 
+             -->
+            <li v-for= "todoItem in todoItems" :key= "todoItem">
+                <i class="checkBtn fa fa-check"></i>
                 {{ todoItem }}
-                <!-- @click은 v-on:click 과 동일하게 동작한다. -->
-                <span class="removeBtn" type="button" @click="removeTodo(todoItem, index)">
-                    <i class="fa fa-trash" aria-hidden="true"></i>
+                <span class="removeBtn" type="button" @click= "removeTodo(todoItem)">
+                    <i class="fa fa-trash"></i>
                 </span>
             </li>
         </ul>
     </section>
 </template>
 
-<script>    
-    export default{
-        // + 추가
-        props : ['propsdata'],
-        
-        methods: {
-            //3. 선택한 일을 뷰에서 인식하도록 만들기 
-            removeTodo(todoItem, index) {
-                // console.log(todoItem, index);
-                this.$emit('removeTodo', todoItem, index)
+<script>
+export default{
+     // 데이터 속성 생성
+    data(){
+        return {
+            todoItems: []
+        }
+    },
+    // 로컬 스토리지 데이터를 뷰 데이터에 저장하는 코드
+    created(){
+        if(localStorage.length > 0){
+            for(var i = 0; i < localStorage.length; i++){
+                this.todoItems.push(localStorage.key(i));
             }
         }
+    },
+    methods: {
+        removeTodo(todoItem){
+            // console.log(todoItem);
+            localStorage.removeItem(todoItem);
+        }
     }
+}    
+
 </script>
 
 <style>

@@ -1,52 +1,28 @@
 <template>
   <div id="app">
-    <TodoHeader></TodoHeader>
-    <TodoInput v-on:addTodo = 'addTodo'></TodoInput>
-    <TodoList v-bind:propsdata = 'todoItems' @removeTodo = 'removeTodo' ></TodoList>
-    <TodoFooter v-on:removeAll = 'clearAll'></TodoFooter>
+    <TodoH></TodoH>
+    <TodoInput></TodoInput>
+    <TodoList></TodoList>
+    <TodoFooter></TodoFooter>
   </div>
 </template>
 
 <script>
-    import TodoHeader from './components/TodoHeader.vue'
-    import TodoInput from './components/TodoInput.vue'
-    import TodoList from './components/TodoList.vue'
-    import TodoFooter from './components/TodoFooter.vue'
-    export default{
-      data(){
-        return {
-          todoItems: [] //todoItems 데이터 속성 선언
-        }
-      },
-      created() {
-        if (localStorage.length > 0){
-          for(var i = 0; i < localStorage.length; i++) {
-            this.todoItems.push(localStorage.key(i));
-          }
-        }
-      },
-      methods:{
-        // 로컬 스토리지에 데이터를 추가하는 로직
-        addTodo(todoItem){ // todoItem 은  todoInput컴포넌트에서 올려 보낸 할일 텍스트 값 
-          localStorage.setItem(todoItem, todoItem); 
-          this. todoItems.push(todoItem);
-        },
-        clearAll(){
-          localStorage.clear(); 
-          this.todoItems = [];
-        },
-        removeTodo(todoItem, index){
-           localStorage.removeItem(todoItem);
-           this.todoItems.splice(index, 1);
-        }
-      },
-      components: {
-          'TodoHeader' : TodoHeader,
-          'TodoInput' : TodoInput,
-          'TodoList' : TodoList,
-          'TodoFooter' : TodoFooter
-      }
+// import 불러올 파일의 내용이 담길 객체 from '불러올 파일 위치';
+  import a from './components/TodoHeader.vue'
+  import TodoInput from './components/TodoInput.vue'
+  import TodoList from './components/TodoList.vue'
+  import TodoFooter from './components/TodoFooter.vue'
+
+  export default{
+    components: {
+      // '컴포넌트 태그 이름' : 컴포넌트 내용(불러올 파일의 내용이 담길 객체)
+      'TodoH' : a,
+      'TodoInput' : TodoInput,
+      'TodoList' : TodoList,
+      'TodoFooter' : TodoFooter
     }
+  }
 </script>
 
 <style>

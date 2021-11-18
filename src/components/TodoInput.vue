@@ -1,14 +1,21 @@
 <template>
     <div class="inputBox shadow">
-        <input type="text" v-model = "newTodoItem" placeholder="Type what you have to do" @keyup.enter="addTodo">
-        <!-- v-on:key.enter 인풋 박스에 enter를 눌렀을 때 동작하는 속성   -->
-        <span class="addContainer" v-on:click= "addTodo"><i class="addBtn fa fa-plus" aria-hidden= "true"></i></span>
+        <!-- 
+            * v-model  
+            - 폼에서 주로 사용되는 속성, 폼에 입력한 값을 뷰 인스턴스의 데이터와 즉시 동기화 시켜준다. 
+            - 화면에 입력된 값을 저장하여 서버에 보내거나 추가 로직을 수행 할 수 있다.
+         -->
+        <input type="text" v-model= "newTodoItem" placeholder="type what your have to do" @keyup.enter= "addTodo">  
+        <span class="addContainer" v-on:click = "addTodo">
+            <i class="addBtn fa fa-plus"></i>
+        </span>
     </div>
 </template>
 
 <script>
     export default{
-        data() {
+        // 데이터 속성 생성
+        data(){
             return{
                 newTodoItem: ''
             }
@@ -16,15 +23,9 @@
         methods: {
             addTodo(){
                 // console.log(this.newTodoItem);
-                // localStorage.setItem(this.newTodoItem, this.newTodoItem);
-    
-                // 1.  인풋 박스의 입력 값이 있을 때만 저장
-                if (this.newTodoItem !== "") {
-                    // 2. 인풋 박스에 입력된 텍스트의 앞뒤 공백 문자열 제거
-                    var value = this.newTodoItem && this.newTodoItem.trim();
-                    this.$emit('addTodo', value);
-                    // localStorage.setItem(value, value); //* setItem : 로컬 스토리지에 데이터를 추가하는 API (키 , 값) 형태로 저장
-                    // 3. 인풋 박스의 입력 초기화
+                if(this.newTodoItem !== ""){ //인풋박스에 입력된 텍스트가 없을 경우 로컬 스토리지에 데이터가 저장되지 않도록 한다.
+                    const value = this.newTodoItem && this.newTodoItem.trim(); //trim() : 문자열 좌우에서 공백을 제거하는 함수
+                    localStorage.setItem(value, value);
                     this.clearInput();
                 }
             },
