@@ -54,5 +54,5 @@
 </head>
 ```
 
-- favicon generator
-- google font ubuntu 
+- favicon generator [바로가기](https://www.favicon-generator.org/)
+- google font [바로가기](https://fonts.google.com/?subset=korean) 
