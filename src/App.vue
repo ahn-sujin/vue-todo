@@ -15,10 +15,10 @@
   import TodoFooter from './components/TodoFooter.vue'
 
   export default{
-    // 데이터 속성 생성
+    // 데이터 속성 
     data(){
       return{
-        todoItems: []
+        todoItems: []  
       }
     },
     methods:{
