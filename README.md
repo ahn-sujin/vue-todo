@@ -9,7 +9,7 @@
  
 <br><br>
 
-## ✅구현 방법
+## ✅구현 순서
   **[1. 프로젝트 생성하고 구조 확인하기](./markdown/step01.md)** 
   
   **[2. 컴포넌트 생성하고 등록하기](./markdown/step02.md)**
@@ -22,7 +22,7 @@
 <br><br>
 
 ## ✨최종 구현 결과
-
+![image](./img/vue_todo.gif)
 
 <br><br>
 
