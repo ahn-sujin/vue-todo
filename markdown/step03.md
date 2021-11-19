@@ -239,35 +239,52 @@
 ```
 ![image](/img/todoinput05.PNG)
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <br>
 
 ## 3. TodoList 컴포넌트
+### 3-1. 로컬 스토리지 데이터를 뷰 데이터에 저장하기
+```vue
+...
+<script>
+export default{
+  //1. todoItems 데이터 속성을 빈 배열로 선언한다.
+  data() {
+    return {
+      todoItems : [] 
+    }
+  },
+  // 2. created 라이프사이클 훅에 for 반복문과 push()로 로컬 스토리지의 데이터를 todoItems에 담아준다. 
+  created() {
+    if(localStorage.length > 0){
+      for(var i = 0, i < localStorage.length; i++){
+        this.todoItems.push(localStorage.key(i));
+      }
+    }
+  }
+}
+</script>
+...
+```
+* 뷰의 인스턴스가 생성되자마자 뷰 데이터에 접근할 수 있도록 **eated() 라이프 사이클**에서 로컬 스토리지의 데이터를 뷰 데이터로 옮긴다.
 
 
+### 3-2. 뷰 데이터의 아이템 개수만큼 화면에 표시하기
+
+### 3-3. 할 일 목록 & 삭제 버튼 마크업 작업하기
+
+### 3-4. 할 일 삭제 버튼에 클릭 이벤트 추가하기
+
+### 3-5. 선택한 할 일을 뷰에서 인식하도록 만들기
+
+### 3-6. 선택한 할 일을 로컬 스토리지와 뷰 데이터에서 삭제하기
 
 <br>
 
 ## 4. TodoFooter 컴포넌트 
+### 4-1. 모두 삭제하기 버튼 추가하기 
+
+
+
+
 
 
