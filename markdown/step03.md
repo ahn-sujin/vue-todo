@@ -449,9 +449,42 @@ export default{
 ## 4. TodoFooter 컴포넌트 
 ### 4-1. 모두 삭제하기 버튼 추가하기 
 ```vue
+<template>
+    <div class="clearAllContainer">
+        <span class="clearAllBtn" v-on:click = "clearTodo">Clear All</span>
+    </div>
+</template>
 
+<script>
+export default{
+    methods: {
+        clearTodo(){
+            localStorage.clear(); //로컬 스토리지의 데이터를 모두 삭제   
+        }
+    }
+}
+</script>
+
+<style>
+    .clearAllContainer{
+        width: 8.5rem;
+        height: 50px;
+        line-height: 50px;
+        background: #fff;
+        border-radius: 5px;
+        margin: 40px auto 0;
+    }
+    .clearAllBtn{
+        display: block;
+        color: #e20303;
+        cursor: pointer;
+    }
+</style>
 
 ```
+[gif 첨부]
+
+**❗ 문제점: Clear All 버튼을 클릭하면 브라우저를 새로 고침해야만 로컬 스토리지의 데이터가 반영된다**
 
 
 
