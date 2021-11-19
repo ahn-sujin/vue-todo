@@ -54,3 +54,5 @@
 </head>
 ```
 
+- favicon generator
+- google font ubuntu 
