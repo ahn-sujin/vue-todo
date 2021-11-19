@@ -8,8 +8,6 @@
 
 
 ## 1. TodoHeader 컴포넌트
-* TodoHeader.vue
-
   ```vue
   <template>
     <header>
@@ -31,7 +29,7 @@
       }
   </style>
   ```
-  [이미지 첨부]
+  ![image](/img/todoinput01.PNG)
 
 <br>
 
@@ -64,7 +62,7 @@
 ...
 
 ```
-[gif 첨부]
+![image](/img/todoinput03.gif)
 
 * 인풋박스에 텍스트를 입력하면 뷰 개발자도구 newTodoItem 값이 같이 갱신되는 것을 확인 할 수 있다.
 
@@ -97,7 +95,7 @@
 ...
 
 ```
-[gif 첨부]
+![image](/img/todoinput2.gif)
 
 * 추가 버튼을 클릭했을 때 console창에 텍스트 값이 표시됨으로, 이벤트가 정상적으로 동작하는 것을 확인할 수 있다.
 
@@ -132,7 +130,7 @@
 </script>
 ...
 ```
-[이미지첨부]
+![image](/img/todoinput04.PNG)
 
 <br>
 
@@ -239,7 +237,7 @@
     }
 </style>
 ```
-[이미지 첨부]
+![image](/img/todoinput05.PNG)
 
 
 
