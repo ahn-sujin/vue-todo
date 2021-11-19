@@ -1,9 +1,12 @@
 # 1. 컴포넌트 생성
 - 프로젝트 폴더에 `src` 밑에 `components` 폴더를 생성하고 그 아래에 `TodoHeader.vue` `TodoInput.vue` `TodoList.vue` `TodoFooter.vue`를 생성한다.
+
+  ![image](/img/컴포넌트생성.PNG)
+  
 - 컴포넌트 같은 경우 관례상 src/components 폴더에서 관리를 한다. (폴더 관리, 추후 재활용 접근에 용이)
 - 애플리케이션의 규모가 커질 경우 `components/기능/컴포넌트.vue` 와 같은 형싱으로 관리 (기능별로 폴더 나누기)
 
-[이미지 첨부]
+  
 
 > 컴포넌트 코드 구조
 ```vue
@@ -76,5 +79,5 @@ export default{
 
 ```
 
-[이미지 첨부]
+ ![image](/img/컴포넌트생성2.PNG)
 
