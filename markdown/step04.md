@@ -135,7 +135,6 @@
         todoItems: []  
       }
     },
-    porps: ['propsdata'],
     methods:{
       addTodo(todoItem){ 
           localStorage.setItem(todoItem,todoItem);
