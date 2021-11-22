@@ -1,3 +1,36 @@
+## 📝목차 
+### [1. TodoHeader 컴포넌트](#1-odoHeader-컴포넌트)
+
+### [2. TodoInput 컴포넌트](#2-TodoInput-컴포넌트)
+
+   [2-1. 인풋 박스와 버튼 추가하기](#2-1-인풋-박스와-버튼-추가하기)
+   
+   [2-2. 텍스트를 저장하기 위한 버튼 이벤트를 추가하기](#2-2-텍스트를-저장하기-위한-버튼-이벤트를-추가하기)
+   
+   [2-3. 입력받은 텍스트를 로컬 스토리지에 저장하기](#2-3-입력받은-텍스트를-로컬-스토리지에-저장하기)
+   
+   [2-4. addTodo() 안에 예외 처리 코드 넣기](#2-4-addTodo()-안에-예외-처리-코드-넣기)
+   
+   [2-5. 버튼 스타일 적용하기](#2-5-버튼-스타일-적용하기)
+
+### [3. TodoList 컴포넌트](#3-TodoList-컴포넌트)
+ 
+   [3-1. 로컬 스토리지 데이터를 뷰 데이터에 저장하기](#3-1-로컬-스토리지-데이터를-뷰-데이터에-저장하기)
+   
+   [3-2. 뷰 데이터의 아이템 개수만큼 화면에 표시하기](#3-2-뷰-데이터의-아이템-개수만큼-화면에-표시하기)
+   
+   [3-3. 할 일 목록 & 삭제 버튼 마크업 작업하기](#3-3-할-일-목록-&-삭제-버튼-마크업-작업하기)
+   
+   [3-4. 할 일 삭제 버튼에 클릭 이벤트 추가하기](#3-4-할-일-삭제-버튼에-클릭-이벤트-추가하기)
+   
+   [3-5. 선택한 할 일을 뷰에서 인식하도록 만들기](#3-5-선택한-할-일을-뷰에서-인식하도록-만들기)
+   
+   [3-6. 선택한 할 일을 로컬 스토리지와 뷰 데이터에서 삭제하기](#3-6-선택한-할-일을-로컬-스토리지와-뷰-데이터에서-삭제하기)
+
+### [4. TodoFooter 컴포넌트](#4-TodoFooter-컴포넌트)
+
+<br><br>
+
 ### 📌컴포넌트 별 구현할 기능
 ```
    TodoHeader : 애플리케이션 이름 표시 
@@ -158,7 +191,7 @@
               if(this.newTodoItem !== ""){
                  // 2. 인풋박스에 입력된 텍스트의 앞뒤 공백 문자열 제거 
                  var value = this.newTodoItem && this.newTodoItem.trim();
-                 localStorage.setItem(this.newTodoItem, this.newTodoItem);
+                 localStorage.setItem(value, value);
                  //3. 인풋 박스의 입력 값 초기화
                  this.clearInput();
               } 
@@ -254,6 +287,10 @@ export default{
     }
   },
   // 2. created 라이프사이클 훅에 for 반복문과 push()로 로컬 스토리지의 데이터를 todoItems에 담아준다. 
+  // created
+  // - 인스턴스가 화면에 부착되기 전 단계
+  // - data속성과 methods속성에 접근할 수 있는 첫 라이프 사이클 단계
+  // - 컴포넌트가 생성되고 나서 실행되는 단계로, 서버에 데이터를 요청하여 받아오는 로직을 수행한다. 
   created() {
     if(localStorage.length > 0){
       for(var i = 0, i < localStorage.length; i++){
@@ -283,7 +320,7 @@ export default{
     </section>
 </templat>
 ```
-[이미지 첨부]
+![image](/img/todolist01.PNG)
 
 * ```v-for``` 는 뷰 데이터 속성 todoItems의 내용물 개수만큼 반복해서 ```<li> ```태그를 출력해 준다. 
 * todoItems의 타입이 배열이기 때문에 배열의 요소 숫자만큼 반복해서 위와 같이 출력한다. 
@@ -377,7 +414,7 @@ export default{
 ...
 
 ```
-[gif첨부]
+![image](/img/todolist02.gif)
 
 <br>
 
@@ -418,7 +455,7 @@ export default{
 
 ```
 
-[gif 첨부]
+![image](/img/todolist03.gif)
 
 <br>
 
@@ -438,7 +475,7 @@ export default{
 </script>
 
 ```
-[gif 첨부]
+![image](/img/todolist04.gif)
 
 * ```removeItem()``` API는 todoItem 인자를 사용하여 로컬 스토리지에서 할 일 텍스트를 삭제한다.
 * ```splice() ``` API는 인자로 받은 index를 이용하여 배열의 해당 인덱스에서 1만큼 삭제한다.
@@ -482,7 +519,7 @@ export default{
 </style>
 
 ```
-[gif 첨부]
+![image](/img/todolist05.gif)
 
 **❗ 문제점: Clear All 버튼을 클릭하면 브라우저를 새로 고침해야만 로컬 스토리지의 데이터가 반영된다**
 

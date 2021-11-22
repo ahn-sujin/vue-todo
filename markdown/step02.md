@@ -60,6 +60,7 @@ export default{
 
 <script>
   // 컴포넌트 내용 불러오기;
+  // import 불러올 파일의 내용이 담길 객체 from '불러올 파일 위치'
   import TodoHeader from './components/TodoHeader.vue'
   import TodoInput from './components/TodoInput.vue'
   import TodoList from './components/TodoList.vue'
@@ -68,6 +69,7 @@ export default{
   export default{
     components: {
       // 지역 컴포넌트 등록
+      // '컴포넌트 태그 이름' : 컴포넌트 내용(불러올 파일의 내용이 담길 객체)
       'TodoHeader' : TodoHeader,
       'TodoInput' : TodoInput,
       'TodoList' : TodoList,
