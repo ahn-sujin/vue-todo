@@ -1,18 +1,23 @@
 <template>
     <section>
-        <ul>
+        <!-- 
+          - transition-group 은 목록에 애니메이션을 추가할 때 사용되는 태그  
+          - tag 속성에 html 태그 이름을 지정
+          - name 속성은 css 클래스와 연관
+        -->
+        <transition-group name="list" tag="ul">
             <!-- 
                 v-for = "아이템명 in array"
                 : 지정한 데이터의 갯수만큼 html을 출력 
              -->
-            <li v-for= "(todoItem, index) in propsdata" :key="index" class="shadow">
+            <li v-for= "(todoItem, index) in propsdata" :key="todoItem" class="shadow">
                 <i class="checkBtn fa fa-check"></i>
                 {{ todoItem }}
                 <span class="removeBtn" type="button" v-on:click= "removeTodo(todoItem, index)">
                     <i class="fa fa-trash"></i>
                 </span>
             </li>
-        </ul>
+        </transition-group>
     </section>
 </template>
 
@@ -28,7 +33,6 @@ export default{
         }
     }
 }    
-
 </script>
 
 <style>
@@ -59,5 +63,19 @@ export default{
         margin-left: auto;
         color: #de4343;
         cursor: pointer;
+    }
+    /* 
+      앞에서 설정한 name 속성 값(list)을 접두사로 두고,
+      enter-active , leave-active, enter, leave-to 로 동작을 정의 
+      (자세한 내용은 뷰 애니메이션 클래스 공식 문서 참고) 
+    */
+    .list-enter-active,
+    .list-leave-active{
+      transition: all 1s;
+    }
+    .list-enter, 
+    .list-leave-to{
+      opacity: 0;
+      transform: translateY(30px);
     }
 </style>
