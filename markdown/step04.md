@@ -320,4 +320,4 @@ export default{
 
 <br>
 
-![image](/img/vue_todo.gif)
+![image](/img/todolist_final.gif)
