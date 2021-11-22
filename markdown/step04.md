@@ -193,7 +193,7 @@ export default{
       todoItems : [] 
     }
   },
-  
+  props: ['porpsdata'],
   created() { // App.vue로 이동
     if(localStorage.length > 0){
       for(var i = 0; i < localStorage.length; i++){
