@@ -71,7 +71,6 @@
         todoItems: []  
       }
     },
-    porps: ['propsdata'],
     methods:{
       // 4
       addTodo(){
