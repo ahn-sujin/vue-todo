@@ -191,7 +191,7 @@
               if(this.newTodoItem !== ""){
                  // 2. 인풋박스에 입력된 텍스트의 앞뒤 공백 문자열 제거 
                  var value = this.newTodoItem && this.newTodoItem.trim();
-                 localStorage.setItem(this.newTodoItem, this.newTodoItem);
+                 localStorage.setItem(value, value);
                  //3. 인풋 박스의 입력 값 초기화
                  this.clearInput();
               } 
