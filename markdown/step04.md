@@ -216,11 +216,106 @@ export default{
 <br>
 
 ## 3. 이벤트 전달을 이용해 Clear All 버튼 기능 개선하기
+- 컴포넌트 간 **이벤트 전달** 방식을 사용
+  - 이벤트 전달 : 하위 컴포넌트에서 발생시킨 이벤트를 상위 컴포넌트에서 받아 상위 컴포넌트의 매서드를 동작시키는 것
+- 하위 컴포넌트 ```TodoFooter```에서 발생시킬 이벤트 이름을 removeAll , 상위 컴포넌트 ```App```에서 받아 실핼시킬 매서드 이름을 clearAll() 설정
 
+### 3-1. 상위 컴포넌트 App 코드 수정하기
+
+```vue
+<template>
+  <div id="app">
+    ...
+    <TodoFooter v-on:removeAll = "clearAll"></TodoFooter>
+  </div>
+</template>
+
+<script>
+  export default{
+   ...
+    methods:{
+       ... 
+      clearAll(){
+        localStorage.clear(); // 로컬 스토리지의 데이터를 모두 삭제
+        this.todoItems = []; // todoItems의 데이터를 비움
+      },
+    },
+    ...
+  }
+</script>
+...
+```
+
+### 3-2. 하위 컴포넌트 코드 수정하기
+```vue
+<script>
+export default{
+    methods: {
+        clearTodo(){
+            // localStorage.clear(); 삭제
+            this.$emit('removeAll');  //추가 
+        },
+    }
+}
+</script>
+```
 
 <br>
 
 ## 4. 이벤트 이용해 삭제 기능 개선하기
+- ```todoList```컴포넌트의 각 할 일 아이템을 삭제하는 로직에도 **이벤트 전달 방식**을 적용한다.
 
+#### App.vue
+```vue
+<template>
+  <div id="app">
+    ...
+    <TodoList v-bind:propsdata = "todoItems" v-on:removeList = "clearList"></TodoList>
+    ...
+  </div>
+</template>
+
+<script>
+  ...
+  export default{
+    ...
+    methods:{
+      ...
+      clearList(todoItem, index){
+        localStorage.removeItem(todoItem);
+        this.todoItems.splice(index, 1); //splice() 메소드는 배열의 기존 요소를 삭제 또는 교체하거나 새 요소를 추가하여 배열의 내용을 변경
+      }
+    },
+   ...
+  }
+</script>
+...
+```
+<br> 
+
+#### TodoList.vue
+- 할 일 목록에서 삭제 아이콘을 클릭하면 ```TodoList```컴포넌트의 removeTodo 메서드에서 removeList라는 이벤트를 발생 시켜 ```App```컴포넌트로 전달한다.
+- 이벤트를 전달할 때 선택한 할 일의 텍스트(todoItem)와 순서(index)를 보낸다.
+- **이벤트를 전달할 때 인자를 한께 전달 할 수 있다.**
+
+```vue
+...
+<script>
+export default{
+  ...
+  methods: {
+    removeTodo(todoItem, index) {
+      // localStorage.removeItem(todoItem); App.vue clearList(todoItem, index) 메소드로 이동
+      // this.todoItems.splice(index, 1); App.vue clearList(todoItem, index) 메소드로 이동
+      this.$emit('removeList', todoItem, index); // 추가
+    }
+  }
+}
+</script>
+...
+```
 
 <br>
+
+[gif 첨부]
+
