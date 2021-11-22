@@ -287,6 +287,10 @@ export default{
     }
   },
   // 2. created 라이프사이클 훅에 for 반복문과 push()로 로컬 스토리지의 데이터를 todoItems에 담아준다. 
+  // created
+  // - 인스턴스가 화면에 부착되기 전 단계
+  // - data속성과 methods속성에 접근할 수 있는 첫 라이프 사이클 단계
+  // - 컴포넌트가 생성되고 나서 실행되는 단계로, 서버에 데이터를 요청하여 받아오는 로직을 수행한다. 
   created() {
     if(localStorage.length > 0){
       for(var i = 0, i < localStorage.length; i++){
